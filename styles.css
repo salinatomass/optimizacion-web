@@ -58,12 +58,6 @@ header {
 
 .logo {
   margin-left: 30px;
-  width: 200px;
-  height: 61px;
-  background-image: url(/assets/logo-platzi-video.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
 }
 
 .menu {
@@ -104,7 +98,7 @@ ul:hover {
   cursor: pointer;
 }
 
-.menu > div > img {
+.header__menu-img {
   margin-right: 8px;
   width: 40px;
 }
@@ -189,6 +183,7 @@ footer a:hover {
 }
 
 .carousel-item {
+  will-change: transform;
   border-radius: 20px;
   position: relative;
   display: inline-block;
@@ -199,7 +194,20 @@ footer a:hover {
   cursor: pointer;
   transition: 450ms all;
   transform-origin: center left;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+.carousel-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 1);
+
+  will-change: opacity;
+  transition: 450ms opacity;
+  opacity: 0.4;
 }
 /* Change opacity to all items but current */
 .carousel > div:hover .carousel-item:not(:hover) {
@@ -208,11 +216,13 @@ footer a:hover {
 /* Scale up current */
 .carousel-item:hover {
   transform: scale(1.5);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 1);
+}
+.carousel-item:hover::before {
+  opacity: 1;
 }
 /* Move subsecuent item */
 .carousel-item:hover + .carousel-item {
-  margin-left: 100px;
+  transform: translateX(100px);
 }
 
 .carousel-item > img {
@@ -254,18 +264,18 @@ footer a:hover {
 }
 
 /* Title */
-.carousel-item > div > p:nth-of-type(1) {
+.carousel-item__title {
   color: white;
   margin: 5px 0px 0px 0px;
 }
 /* Subtitle */
-.carousel-item > div > p:nth-of-type(2) {
+.carousel-item__subtitle {
   color: white;
   font-size: 7px;
   margin: 3px 0px;
 }
 /* Date */
-.carousel-item > div > p:nth-of-type(3) {
+.carousel-item__date {
   color: white;
   font-size: 6px;
   margin: 0px;
