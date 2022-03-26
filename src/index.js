@@ -14,7 +14,11 @@ const Carousel = ({ itemsList = [] }) =>
           attributes: { titles, posterImage, slug, youtubeVideoId, startDate },
         }) =>
           CarouselItem({
-            imageUrl: posterImage.large,
+            imageUrl: {
+              small: posterImage.small,
+              medium: posterImage.medium,
+              large: posterImage.large,
+            },
             title: titles.en,
             subtitle: titles.ja_jp,
             slug,
