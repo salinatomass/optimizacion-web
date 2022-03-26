@@ -1,4 +1,3 @@
-const webpack = require('webpack')
 const path = require('path')
 
 const nodeEnv = process.env.NODE_ENV || 'development'
@@ -8,11 +7,17 @@ const config = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/dist',
     filename: 'bundle.js',
+    publicPath: '/dist',
+  },
+  resolve: {
+    extensions: ['.js'],
   },
   devServer: {
-    contentBase: '.',
+    static: { directory: path.join(__dirname, '.') },
+    compress: true,
+    historyApiFallback: true,
+    port: 3005,
   },
 }
 
