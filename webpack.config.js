@@ -9,12 +9,13 @@ const plugins = []
 
 if (shouldAnalyze) plugins.push(new BundleAnalyzerPlugin())
 
+/** @type {import('webpack').Configuration} */
 const config = {
   mode: nodeEnv,
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     publicPath: '/dist',
   },
   resolve: {
@@ -27,6 +28,22 @@ const config = {
     port: 3005,
   },
   plugins,
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        default: false,
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          chunks: 'all',
+          name: 'vendors',
+          reuseExistingChunk: true,
+          enforce: true,
+          priority: 10,
+        },
+      },
+    },
+  },
 }
 
 module.exports = config
