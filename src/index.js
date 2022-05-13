@@ -1,6 +1,7 @@
 import h from 'hyperscript'
 import { fetchPopular, fetchHighestRated, fetchTrending } from './api'
 import CarouselItem from './CarouselItem'
+import { modalListener } from './modal'
 
 const SectionTitle = title => h('h3.carousel-title', title)
 
@@ -62,4 +63,10 @@ const Carousel = ({ itemsList = [] }) =>
         itemsList: popular,
       })
     )
+
+  document.body.addEventListener('click', e => {
+    const tagName = e.target.tagName
+
+    if (['IMG', 'A'].includes(tagName)) modalListener(e)
+  })
 })(document, window)
