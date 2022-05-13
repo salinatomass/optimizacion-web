@@ -2,10 +2,9 @@ import ModalVideo from 'modal-video'
 import 'modal-video/css/modal-video.min.css'
 
 export const openModal = videoId => {
-  // hack :(
-  const button = document.createElement('button')
+  const button = document.createElement('button') // ghost button hack!!
   button.classList.add('js-modal-btn')
-  button.dataset.videoid = videoId
+  button.dataset.videoId = videoId
 
   new ModalVideo([button])
   button.click()
