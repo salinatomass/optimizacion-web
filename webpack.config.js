@@ -16,7 +16,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
-    publicPath: '/dist',
+    publicPath: '/dist/',
   },
   resolve: {
     extensions: ['.js'],
@@ -39,17 +39,6 @@ const config = {
   optimization: {
     splitChunks: {
       chunks: 'all',
-      cacheGroups: {
-        default: false,
-        vendors: {
-          test: /[\\/]node_modules[\\/]/,
-          chunks: 'all',
-          name: 'vendors',
-          reuseExistingChunk: true,
-          enforce: true,
-          priority: 10,
-        },
-      },
     },
   },
 }
