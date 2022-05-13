@@ -21,6 +21,14 @@ const config = {
   resolve: {
     extensions: ['.js'],
   },
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
   devServer: {
     static: { directory: path.join(__dirname, '.') },
     compress: true,
