@@ -1,11 +1,26 @@
 const path = require('path')
+const HTMLWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin
 
 const nodeEnv = process.env.NODE_ENV || 'development'
 const shouldAnalyze = process.argv.includes('--analyze')
 
-const plugins = []
+const plugins = [
+  new HTMLWebpackPlugin({
+    template: './public/index.html',
+    filename: './index.html',
+  }),
+  new CopyPlugin({
+    patterns: [
+      path.resolve(__dirname, 'public', 'styles.css'),
+      path.resolve(__dirname, 'public', 'desktop.css'),
+      path.resolve(__dirname, 'public', 'favicon.ico'),
+      { from: path.join(__dirname, 'assets'), to: 'assets' },
+    ],
+  }),
+]
 
 if (shouldAnalyze) plugins.push(new BundleAnalyzerPlugin())
 
@@ -16,7 +31,6 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
-    publicPath: '/dist/',
   },
   resolve: {
     extensions: ['.js'],
@@ -30,7 +44,7 @@ const config = {
     ],
   },
   devServer: {
-    static: { directory: path.join(__dirname, '.') },
+    static: { directory: path.join(__dirname, 'dist') },
     compress: true,
     historyApiFallback: true,
     port: 3005,
