@@ -5,8 +5,19 @@ const render = require('./render')
 const app = express()
 
 app.get('/', async (req, res) => {
+  const PLACEHOLDER = '<div id="ssr-placeholder"></div>'
+
+  const homeFileBuffer = fs.readFileSync('./dist/index.html')
+  const htmlText = homeFileBuffer.toString()
+  const [precontent, postcontent] = htmlText.split(PLACEHOLDER)
+
   const content = await render()
-  res.send(content)
+
+  const ssrHome = precontent + content + postcontent
+
+  res.send(ssrHome)
 })
+
+app.use(express.static('dist'))
 
 app.listen('3000', () => console.log(`App running on port 3000`))
