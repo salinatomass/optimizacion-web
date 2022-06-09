@@ -17,7 +17,7 @@ const plugins = [
       path.resolve(__dirname, 'public', 'styles.css'),
       path.resolve(__dirname, 'public', 'desktop.css'),
       path.resolve(__dirname, 'public', 'favicon.ico'),
-      { from: path.join(__dirname, 'assets'), to: 'assets' },
+      { from: path.join(__dirname, 'public/assets'), to: 'assets' },
     ],
   }),
 ]
@@ -27,7 +27,7 @@ if (shouldAnalyze) plugins.push(new BundleAnalyzerPlugin())
 /** @type {import('webpack').Configuration} */
 const config = {
   mode: nodeEnv,
-  entry: './src/index.js',
+  entry: './frontend/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
