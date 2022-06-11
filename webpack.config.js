@@ -18,6 +18,7 @@ const plugins = [
       path.resolve(__dirname, 'frontend', 'desktop.css'),
       path.resolve(__dirname, 'favicon.ico'),
       { from: path.join(__dirname, 'frontend/assets'), to: 'assets' },
+      path.join(__dirname, 'service-worker.js'),
     ],
   }),
 ]
