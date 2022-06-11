@@ -5,10 +5,10 @@
   "author": "@jonalvarezz",
   "scripts": {
     "dev": "webpack serve",
-    "start": "node ssr/index.js",
-    "build": "webpack --mode production",
+    "ssr": "node ssr/index.js",
     "export": "node export.js",
-    "serve": "serve dist/"
+    "build": "webpack --mode production && node export.js",
+    "serve": "serve dist/ -l 5000"
   },
   "prettier": {
     "trailingComma": "es5",
