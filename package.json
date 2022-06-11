@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "webpack serve",
     "start": "node ssr/index.js",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "export": "node export.js",
+    "serve": "serve dist/"
   },
   "prettier": {
     "trailingComma": "es5",
