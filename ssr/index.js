@@ -7,7 +7,7 @@ const app = express()
 app.get('/', async (req, res) => {
   const PLACEHOLDER = '<div id="ssr-placeholder"></div>'
 
-  const homeFileBuffer = fs.readFileSync('./dist/index.html')
+  const homeFileBuffer = fs.readFileSync('./dist/index.template.html')
   const htmlText = homeFileBuffer.toString()
   const [precontent, postcontent] = htmlText.split(PLACEHOLDER)
 

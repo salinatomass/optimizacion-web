@@ -9,15 +9,15 @@ const shouldAnalyze = process.argv.includes('--analyze')
 
 const plugins = [
   new HTMLWebpackPlugin({
-    template: './public/index.html',
-    filename: './index.html',
+    template: 'index.template.html',
+    filename: './index.template.html',
   }),
   new CopyPlugin({
     patterns: [
-      path.resolve(__dirname, 'public', 'styles.css'),
-      path.resolve(__dirname, 'public', 'desktop.css'),
-      path.resolve(__dirname, 'public', 'favicon.ico'),
-      { from: path.join(__dirname, 'public/assets'), to: 'assets' },
+      path.resolve(__dirname, 'frontend', 'styles.css'),
+      path.resolve(__dirname, 'frontend', 'desktop.css'),
+      path.resolve(__dirname, 'favicon.ico'),
+      { from: path.join(__dirname, 'frontend/assets'), to: 'assets' },
     ],
   }),
 ]
