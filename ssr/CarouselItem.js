@@ -20,6 +20,7 @@ const Controls = ({ slug, youtubeVideoId }) =>
       h('img', {
         src: 'assets/play-icon.png',
         alt: 'Play',
+        width: '30',
       })
     ),
     h(
@@ -33,6 +34,7 @@ const Controls = ({ slug, youtubeVideoId }) =>
       h('img', {
         src: 'assets/plus-icon.png',
         alt: 'More info',
+        width: '30',
       })
     )
   )

@@ -4,10 +4,9 @@
   "description": "Proyecto del curso de Optimizacion Web de Platzi",
   "author": "@jonalvarezz",
   "scripts": {
-    "start": "npm run dev",
     "dev": "webpack serve",
-    "build": "webpack --mode production",
-    "serve": "serve ./dist"
+    "start": "node ssr/index.js",
+    "build": "webpack --mode production"
   },
   "prettier": {
     "trailingComma": "es5",
